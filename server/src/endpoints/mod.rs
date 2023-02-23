@@ -1,2 +1,4 @@
-pub mod get_request;
-pub use get_request::*;
+pub mod get_meaning;
+pub use get_meaning::*;
+
+pub mod data_structures;

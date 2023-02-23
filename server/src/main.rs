@@ -1,7 +1,7 @@
 use std::sync::Mutex;
 
 use actix_web::{web, App, HttpServer};
-use endpoints::{get_meaning, test, RemoteDictionary};
+use endpoints::{data_structures::RemoteDictionary, get_meaning};
 
 mod endpoints;
 
@@ -12,7 +12,6 @@ async fn main() -> std::io::Result<()> {
     HttpServer::new(move || {
         App::new()
             .app_data(remode_dictionary_mutex.clone())
-            .route("/", web::get().to(test))
             .route("/get_meaning", web::get().to(get_meaning))
     })
     .bind(("0.0.0.0", 8000))?
