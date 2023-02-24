@@ -38,7 +38,7 @@ pub async fn set_meaning(
         }
     }
 
-    let response = serde_json::to_string(&word_meaning.word_meanings).unwrap();
+    let response = serde_json::to_string(&word_meaning).unwrap();
     HttpResponse::Ok()
         .content_type(ContentType::json())
         .body(response)

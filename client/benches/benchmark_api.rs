@@ -1,5 +1,3 @@
-use std::collections::HashMap;
-
 use criterion::{black_box, criterion_group, criterion_main, Criterion};
 use reqwest::blocking::Client;
 use serde::{Deserialize, Serialize};
@@ -62,7 +60,7 @@ fn benchmark_set_meaning_api(c: &mut Criterion) {
         b.iter(|| {
             for _ in 0..num_requests {
                 let _ = client
-                    .get(url)
+                    .put(url)
                     .json(&payload)
                     .send()
                     .expect("Failed to send request");

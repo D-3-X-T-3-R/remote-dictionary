@@ -52,7 +52,7 @@ pub async fn get_stats(
         }
     }
 
-    let response = serde_json::to_string(&stat_response.stats).unwrap();
+    let response = serde_json::to_string(&stat_response).unwrap();
     HttpResponse::Ok()
         .content_type(ContentType::json())
         .body(response)
