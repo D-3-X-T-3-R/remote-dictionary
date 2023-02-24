@@ -1,6 +1,6 @@
 use std::sync::Mutex;
 
-use actix_web::{web, App, HttpServer};
+use actix_web::{web, App, HttpServer,Responder};
 use endpoints::{data_structures::RemoteDictionary, get_meaning, get_stats, set_meaning};
 
 mod endpoints;
@@ -16,6 +16,7 @@ async fn main() -> std::io::Result<()> {
             .route("/set_meaning", web::put().to(set_meaning))
             .route("/get_stats", web::get().to(get_stats))
     })
+    .workers(8)
     .bind(("0.0.0.0", 8000))?
     .run()
     .await
